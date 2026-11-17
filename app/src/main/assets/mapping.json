@@ -1,0 +1,299 @@
+{
+ "entries": [
+  {
+   "idx": 56,
+   "group": "app",
+   "label": "活力指标"
+  },
+  {
+   "idx": 57,
+   "group": "app",
+   "label": "闹钟"
+  },
+  {
+   "idx": 33,
+   "group": "app",
+   "label": "支付宝"
+  },
+  {
+   "idx": 39,
+   "group": "app",
+   "label": "呼吸训练"
+  },
+  {
+   "idx": 43,
+   "group": "app",
+   "label": "日历"
+  },
+  {
+   "idx": 45,
+   "group": "app",
+   "label": "秒表"
+  },
+  {
+   "idx": 3,
+   "group": "app",
+   "label": "指南针"
+  },
+  {
+   "idx": 46,
+   "group": "app",
+   "label": "找手机"
+  },
+  {
+   "idx": 37,
+   "group": "app",
+   "label": "手电筒"
+  },
+  {
+   "idx": 30,
+   "group": "app",
+   "label": "心率"
+  },
+  {
+   "idx": 34,
+   "group": "app",
+   "label": "互联互通"
+  },
+  {
+   "idx": 42,
+   "group": "app",
+   "label": "Lua"
+  },
+  {
+   "idx": 44,
+   "group": "app",
+   "label": "音乐"
+  },
+  {
+   "idx": 2,
+   "group": "app",
+   "label": "米家"
+  },
+  {
+   "idx": 49,
+   "group": "app",
+   "label": "更多"
+  },
+  {
+   "idx": 27,
+   "group": "app",
+   "label": "静音手机"
+  },
+  {
+   "idx": 10,
+   "group": "app",
+   "label": "卡包"
+  },
+  {
+   "idx": 40,
+   "group": "app",
+   "label": "万年历"
+  },
+  {
+   "idx": 41,
+   "group": "app",
+   "label": "万年历·图标"
+  },
+  {
+   "idx": 31,
+   "group": "app",
+   "label": "电话"
+  },
+  {
+   "idx": 32,
+   "group": "app",
+   "label": "电话·联系人"
+  },
+  {
+   "idx": 55,
+   "group": "app",
+   "label": "录音"
+  },
+  {
+   "idx": 50,
+   "group": "app",
+   "label": "遥控拍照"
+  },
+  {
+   "idx": 29,
+   "group": "app",
+   "label": "设置"
+  },
+  {
+   "idx": 28,
+   "group": "app",
+   "label": "睡眠"
+  },
+  {
+   "idx": 38,
+   "group": "app",
+   "label": "血氧"
+  },
+  {
+   "idx": 52,
+   "group": "app",
+   "label": "运动"
+  },
+  {
+   "idx": 54,
+   "group": "app",
+   "label": "跑步课程"
+  },
+  {
+   "idx": 53,
+   "group": "app",
+   "label": "运动记录"
+  },
+  {
+   "idx": 51,
+   "group": "app",
+   "label": "训练状态"
+  },
+  {
+   "idx": 36,
+   "group": "app",
+   "label": "压力"
+  },
+  {
+   "idx": 26,
+   "group": "app",
+   "label": "计时器"
+  },
+  {
+   "idx": 48,
+   "group": "app",
+   "label": "待办"
+  },
+  {
+   "idx": 0,
+   "group": "app",
+   "label": "小爱"
+  },
+  {
+   "idx": 1,
+   "group": "app",
+   "label": "Alexa"
+  },
+  {
+   "idx": 47,
+   "group": "app",
+   "label": "天气"
+  },
+  {
+   "idx": 58,
+   "group": "app",
+   "label": "女性健康"
+  },
+  {
+   "idx": 35,
+   "group": "app",
+   "label": "微信支付"
+  },
+  {
+   "idx": 15,
+   "group": "card",
+   "label": "access card 01"
+  },
+  {
+   "idx": 11,
+   "group": "card",
+   "label": "access card 02"
+  },
+  {
+   "idx": 13,
+   "group": "card",
+   "label": "access card 03"
+  },
+  {
+   "idx": 14,
+   "group": "card",
+   "label": "access card 04"
+  },
+  {
+   "idx": 22,
+   "group": "card",
+   "label": "access card sdoor"
+  },
+  {
+   "idx": 8,
+   "group": "card",
+   "label": "access card work"
+  },
+  {
+   "idx": 25,
+   "group": "card",
+   "label": "bank card mastercard"
+  },
+  {
+   "idx": 21,
+   "group": "card",
+   "label": "car card biyadi"
+  },
+  {
+   "idx": 20,
+   "group": "card",
+   "label": "car card bmw"
+  },
+  {
+   "idx": 18,
+   "group": "card",
+   "label": "car card brnd"
+  },
+  {
+   "idx": 9,
+   "group": "card",
+   "label": "car card fangchengbao"
+  },
+  {
+   "idx": 5,
+   "group": "card",
+   "label": "car card iccoa"
+  },
+  {
+   "idx": 4,
+   "group": "card",
+   "label": "car card lot1"
+  },
+  {
+   "idx": 6,
+   "group": "card",
+   "label": "car card mini"
+  },
+  {
+   "idx": 16,
+   "group": "card",
+   "label": "car card motor"
+  },
+  {
+   "idx": 17,
+   "group": "card",
+   "label": "car card tengshi"
+  },
+  {
+   "idx": 23,
+   "group": "card",
+   "label": "car card xia1"
+  },
+  {
+   "idx": 12,
+   "group": "card",
+   "label": "car card xiao"
+  },
+  {
+   "idx": 19,
+   "group": "card",
+   "label": "car card yangwang"
+  },
+  {
+   "idx": 7,
+   "group": "card",
+   "label": "car card yu7"
+  },
+  {
+   "idx": 24,
+   "group": "card",
+   "label": "ecc"
+  }
+ ]
+}

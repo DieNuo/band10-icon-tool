@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- 表盘外框 -->
+    <path
+        android:fillColor="#1E110D"
+        android:pathData="M45,24 H63 A21,21 0 0 1 84,45 V63 A21,21 0 0 1 63,84 H45 A21,21 0 0 1 24,63 V45 A21,21 0 0 1 45,24 Z" />
+
+    <!-- 四个图标位 -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M42,34 m-7,0 a7,7 0 1,0 14,0 a7,7 0 1,0 -14,0" />
+    <path
+        android:fillColor="#FF7A45"
+        android:pathData="M66,34 m-7,0 a7,7 0 1,0 14,0 a7,7 0 1,0 -14,0" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M42,58 m-7,0 a7,7 0 1,0 14,0 a7,7 0 1,0 -14,0" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M66,58 m-7,0 a7,7 0 1,0 14,0 a7,7 0 1,0 -14,0" />
+</vector>

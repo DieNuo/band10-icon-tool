@@ -1,0 +1,9 @@
+{
+  "entries": [
+    { "idx": 0, "group": "cc", "label": "勿扰（关）" },
+    { "idx": 1, "group": "cc", "label": "勿扰（开）" },
+    { "idx": 2, "group": "cc", "label": "找手机" },
+    { "idx": 3, "group": "cc", "label": "手电筒" },
+    { "idx": 4, "group": "cc", "label": "设置" }
+  ]
+}
