@@ -1,6 +1,7 @@
 package com.example.kernelsustyleuikit.ui.theme
 
 import android.app.Activity
+import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialExpressiveTheme
 import androidx.compose.material3.MotionScheme
@@ -22,7 +23,8 @@ fun MaterialTemplateTheme(
     val systemDarkTheme = isSystemInDarkTheme()
     val darkTheme = appSettings.colorMode.isDark || (appSettings.colorMode.isSystem && systemDarkTheme)
     val amoledMode = appSettings.colorMode.isAmoled
-    val dynamicColor = appSettings.keyColor == 0
+    // 动态取色（Monet）要求 API 31；低版本回退到固定种子配色
+    val dynamicColor = appSettings.keyColor == 0 && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
     val colorStyle = appSettings.paletteStyle
     val colorSpec = appSettings.colorSpec
 

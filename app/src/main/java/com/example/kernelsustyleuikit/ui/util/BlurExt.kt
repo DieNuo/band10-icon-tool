@@ -1,5 +1,6 @@
 package com.example.kernelsustyleuikit.ui.util
 
+import android.os.Build
 import androidx.compose.foundation.layout.Box
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -9,12 +10,18 @@ import top.yukonga.miuix.kmp.blur.BlurColors
 import top.yukonga.miuix.kmp.blur.LayerBackdrop
 import top.yukonga.miuix.kmp.blur.rememberLayerBackdrop
 import top.yukonga.miuix.kmp.blur.textureBlur
-import top.yukonga.miuix.kmp.shader.isRenderEffectSupported
 import top.yukonga.miuix.kmp.theme.MiuixTheme
+
+/**
+ * 毛玻璃特效统一守卫：miuix-blur 库最低要求 API 33（Android 13）。
+ * 低版本机上必须关闭所有模糊调用，否则会触发 RenderEffect/RuntimeShader 崩溃。
+ */
+val blurSupported: Boolean
+    get() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
 
 @Composable
 fun rememberBlurBackdrop(enableBlur: Boolean): LayerBackdrop? {
-    if (!enableBlur || !isRenderEffectSupported()) return null
+    if (!enableBlur || !blurSupported) return null
     val surfaceColor = MiuixTheme.colorScheme.surface
     return rememberLayerBackdrop {
         drawRect(surfaceColor)

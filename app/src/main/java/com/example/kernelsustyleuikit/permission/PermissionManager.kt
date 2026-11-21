@@ -54,7 +54,13 @@ class PermissionManager(context: Context) {
         }
 
     private fun readState() = PermissionState(
-        storage = Environment.isExternalStorageManager(),
+        storage = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            Environment.isExternalStorageManager()
+        } else {
+            // Android 10 及以下用传统 READ/WRITE_EXTERNAL_STORAGE
+            ContextCompat.checkSelfPermission(appContext, Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
+                PermissionChecker.PERMISSION_GRANTED
+        },
         notification = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             hasPermission(Manifest.permission.POST_NOTIFICATIONS)
         } else {

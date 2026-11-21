@@ -4,12 +4,12 @@ plugins {
     alias(libs.plugins.compose.compiler) apply false
 }
 
-extra["androidMinSdkVersion"] = 31
+extra["androidMinSdkVersion"] = 26
 extra["androidTargetSdkVersion"] = 37
 extra["androidCompileSdkVersion"] = 37
 extra["androidCompileSdkVersionMinor"] = 0
 extra["androidBuildToolsVersion"] = "37.0.0"
 extra["androidSourceCompatibility"] = JavaVersion.VERSION_21
 extra["androidTargetCompatibility"] = JavaVersion.VERSION_21
-extra["managerVersionCode"] = 7
-extra["managerVersionName"] = "2.1.0"
+extra["managerVersionCode"] = 8
+extra["managerVersionName"] = "2.1.1"

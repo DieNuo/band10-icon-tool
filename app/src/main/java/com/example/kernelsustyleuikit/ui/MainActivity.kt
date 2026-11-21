@@ -63,6 +63,7 @@ import com.example.kernelsustyleuikit.ui.theme.LocalColorMode
 import com.example.kernelsustyleuikit.ui.theme.LocalEnableBlur
 import com.example.kernelsustyleuikit.ui.theme.LocalEnableFloatingBottomBar
 import com.example.kernelsustyleuikit.ui.theme.LocalEnableFloatingBottomBarBlur
+import com.example.kernelsustyleuikit.ui.util.blurSupported
 import com.example.kernelsustyleuikit.ui.util.rememberBlurBackdrop
 import com.example.kernelsustyleuikit.ui.util.rememberContentReady
 import com.example.kernelsustyleuikit.ui.viewmodel.MainActivityViewModel
@@ -107,7 +108,9 @@ class MainActivity : ComponentActivity() {
                         android.graphics.Color.TRANSPARENT
                     ) { darkMode },
                 )
-                window.isNavigationBarContrastEnforced = false
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+                    window.isNavigationBarContrastEnforced = false
+                }
                 onDispose { }
             }
 
@@ -229,7 +232,7 @@ fun MainScreen(
                 HorizontalPager(
                     modifier = Modifier
                         .pagerGestureOverride(pagerState = mainPagerState.pagerState, mode = pagerMode)
-                        .then(if (enableFloatingBottomBar && enableFloatingBottomBarBlur) Modifier.layerBackdrop(backdrop) else Modifier),
+                        .then(if (enableFloatingBottomBar && enableFloatingBottomBarBlur && blurSupported) Modifier.layerBackdrop(backdrop) else Modifier),
                     state = mainPagerState.pagerState,
                     beyondViewportPageCount = if (contentReady) 1 else 0,
                     overscrollEffect = null,

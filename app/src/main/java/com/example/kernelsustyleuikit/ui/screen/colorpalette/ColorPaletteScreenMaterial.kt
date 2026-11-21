@@ -389,7 +389,8 @@ private fun ThemePreviewCard(
     val screenHeight = configuration.screenHeightDp.toFloat()
     val screenRatio = screenWidth / screenHeight
     val useRail = useNavigationRail(enableFloatingBottomBar = false)
-    val dynamicColor = keyColor == 0
+    // 动态取色（Monet）要求 API 31；低版本回退到固定种子配色
+    val dynamicColor = keyColor == 0 && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
 
     val colorScheme = if (dynamicColor) {
         val baseScheme = if (isDark) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
@@ -555,7 +556,7 @@ private fun ColorButtonMaterial(
 ) {
     val context = LocalContext.current
     val haptic = LocalHapticFeedback.current
-    val colorScheme = if (color == Color.Unspecified) {
+    val colorScheme = if (color == Color.Unspecified && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
         val baseScheme = if (isDark) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
         rememberDynamicColorScheme(
             seedColor = Color.Unspecified,

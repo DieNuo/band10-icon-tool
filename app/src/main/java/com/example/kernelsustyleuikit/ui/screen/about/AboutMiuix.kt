@@ -62,6 +62,7 @@ import com.example.kernelsustyleuikit.ui.component.miuix.effect.ColorBlendToken
 import com.example.kernelsustyleuikit.ui.theme.LocalEnableBlur
 import com.example.kernelsustyleuikit.ui.theme.isInDarkTheme
 import com.example.kernelsustyleuikit.ui.util.BlurredBar
+import com.example.kernelsustyleuikit.ui.util.blurSupported
 import com.example.kernelsustyleuikit.ui.util.rememberBlurBackdrop
 import top.yukonga.miuix.kmp.basic.Card
 import top.yukonga.miuix.kmp.basic.CardDefaults
@@ -298,7 +299,7 @@ private fun AboutContent(
                     modifier = Modifier
                         .requiredSize(245.dp)
                         .then(
-                            if (enableBlur) {
+                            if (enableBlur && blurSupported) {
                                 Modifier.textureBlur(
                                     backdrop = backdrop,
                                     shape = RoundedCornerShape(0.dp),
@@ -329,7 +330,7 @@ private fun AboutContent(
                         scaleY = 1 - (projectNameProgress * 0.05f)
                     }
                     .then(
-                        if (enableBlur) {
+                        if (enableBlur && blurSupported) {
                             Modifier.textureBlur(
                                 backdrop = backdrop,
                                 shape = RoundedCornerShape(0.dp),
@@ -412,7 +413,7 @@ private fun AboutContent(
                         modifier = Modifier
                             .padding(horizontal = 12.dp)
                             .then(
-                                if (enableBlur) {
+                                if (enableBlur && blurSupported) {
                                     Modifier.textureBlur(
                                         backdrop = backdrop,
                                         shape = RoundedCornerShape(16.dp),

@@ -27,6 +27,7 @@ import com.example.kernelsustyleuikit.ui.component.FloatingBottomBarItem
 import com.example.kernelsustyleuikit.ui.theme.LocalEnableFloatingBottomBar
 import com.example.kernelsustyleuikit.ui.theme.LocalEnableFloatingBottomBarBlur
 import com.example.kernelsustyleuikit.ui.util.BlurredBar
+import com.example.kernelsustyleuikit.ui.util.blurSupported
 import top.yukonga.miuix.kmp.basic.Icon
 import top.yukonga.miuix.kmp.basic.NavigationBar
 import top.yukonga.miuix.kmp.basic.NavigationBarItem
@@ -85,7 +86,7 @@ fun BottomBarMiuix(
             onSelected = { mainState.animateToPage(it) },
             backdrop = backdrop,
             tabsCount = items.size,
-            isBlurEnabled = enableFloatingBottomBarBlur,
+            isBlurEnabled = enableFloatingBottomBarBlur && blurSupported,
         ) {
             items.forEachIndexed { index, item ->
                 FloatingBottomBarItem(
