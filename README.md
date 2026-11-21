@@ -1,6 +1,6 @@
 # 环10改图标工具
 
-小米手环 10（Xiaomi Smart Band 10）图标自定义工具：把手机相册里的任意图片，变成手环上的应用列表图标、控制中心图标和 NFC 卡包封面，生成可刷入的 `.face` 表盘文件。
+小米手环 10（Xiaomi Smart Band 10）图标自定义工具：把手机相册里的任意图片，变成手环上的应用列表图标、控制中心图标和 NFC 卡包封面，生成可刷入的 `.face` 表盘文件。兼容 **Android 8.0 及以上**，低版本自动关闭毛玻璃等特效，功能不受影响。
 
 基于 [KernelSU-Style-UI-Kit](https://github.com/chenaizhang/KernelSU-Style-UI-Kit) 的 Miuix 米柚风格界面构建。
 
@@ -15,7 +15,7 @@
 
 ## 使用方法
 
-1. 安装 APK（Android 12+），打开应用
+1. 安装 APK（Android 8+，低版本可正常安装使用），打开应用
 2. 切换到想要更换的分类，点按方块挑选图片；已选的方块点右上角 × 可移除
 3. 点「生成 .face」，保存生成的表盘文件
 4. 用 AstroBox / OronBox 等工具把 `.face` 安装到手环（安装过程中尽量保持手环亮屏）
