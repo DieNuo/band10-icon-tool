@@ -245,6 +245,7 @@ if root then
     sh("sync")
     local r3,r4=mountTo(DST)
     if r4~=0 then
+      mountTo(SRC)
       verdict("挂载失败","#ff7a7a")
       say(string.format("L%d M%d 已写入",r3,r4))
       say("重启手环后再试一次")
@@ -268,6 +269,7 @@ if root then
     sh("sync")
     local r3,r4=mountTo(DST)
     if r4~=0 then
+      mountTo(SRC)
       verdict("挂载失败","#ff7a7a")
       say(string.format("L%d M%d 已写入",r3,r4))
       say("重启手环后再试一次")
@@ -318,15 +320,20 @@ if root then
     end
     armed=false
     say("正在删除…")
-    -- 先解除占用：卸载挂载点并解绑 loop，否则空间不会真正回收
+    -- 解绑 loop 后删除，再挂回系统资源，否则桌面图标会变黑
     sh("umount /resource/app")
     sh("umount -l /resource/app")
     sh("losetup -d /dev/loop0")
     pcall(function() os.remove(DST) end)
     sh("sync")
+    local rr=mountTo(SRC)
     if size_of(DST)<0 then
       verdict("已删除","#63D9A0")
-      say("释放约 42MB；换装前需重建")
+      if rr==0 then
+        say("释放42MB 资源已还原")
+      else
+        say("释放42MB 重启恢复图标")
+      end
     else
       verdict("删除失败","#ff7a7a")
       say("可能被占用，重启后再试")

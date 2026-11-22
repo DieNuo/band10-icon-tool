@@ -1,8 +1,7 @@
---[[ FPtool 控制中心]]
+--[[FPtool]]
 local lvgl = require("lvgl")
 local DIR,SRC,DST = "/data/fpatch","/system/app.bin","/data/fpatch/app.bin"
 local TOTAL,W,H = 42667008,212,520
-
 local ENT = {
 { "control_center/icon/not_disturb_close.bin",4205968,11036,{{288,"ffffff00","4b4b4bef"},{1032,"ffffff00","00000000"}} },
 { "control_center/icon/not_disturb_open.bin",4328448,11036,{{1032,"ffffff00","00000000"},{1088,"0b040606","c1cacbcb"}} },
@@ -10,7 +9,6 @@ local ENT = {
 { "control_center/icon/flashlights.bin",4194880,11036,{{16,"20202010","f3fbffff"},{96,"25252530","f4fcffff"}} },
 { "control_center/icon/settings.bin",4102352,11036,{{432,"ffffff00","211a18ff"},{736,"ffffff00","1e1816ff"}} },
 }
-
 local function sh(c)
   local a,b,d = os.execute(c)
   if type(a)=="number" then return a end
@@ -44,7 +42,6 @@ local function u32(s,i)
   if not d then return nil end
   return a+b*256+c*65536+d*16777216
 end
-
 local root,label,plate,concl,F_BODY,F_BIG,F_TITLE
 pcall(function()
   F_BODY=lvgl.Font("MiSans-Regular",11)
@@ -55,7 +52,6 @@ pcall(function()
   root=lvgl.Object(nil,{x=0,y=0,w=W,h=H,bg_color="#000000",bg_opa=lvgl.OPA(100),border_width=0,radius=0,pad_all=0})
   root:clear_flag(lvgl.FLAG.SCROLLABLE)
 end)
-
 local buf={}
 local function say(s)
   buf[#buf+1]=tostring(s)
@@ -94,7 +90,6 @@ local function mkbtn(y,h,x,w,text,fg,cb,fs)
   end
   return obj
 end
-
 local fpath,rpath
 local function findFile(name)
   local list={}
@@ -121,7 +116,6 @@ local function fcnt(p)
   f:close()
   return u16(hh,1)
 end
-
 local function af(p,target)
   local f=io.open(p,"rb")
   if not f then return 0,0,"打不开fpk" end
@@ -146,7 +140,6 @@ local function af(p,target)
   f:close()
   return done,bad,nil
 end
-
 local function pb(path,samples)
   local f=io.open(path,"rb")
   if not f then return nil end
@@ -162,7 +155,6 @@ local function pb(path,samples)
   f:close()
   return n,o,x
 end
-
 local function sn()
   local n,o,x=0,0,0
   for i=1,#ENT do
@@ -177,19 +169,16 @@ local function sn()
   end
   return n,o,x
 end
-
 local function mnt(path)
-  sh("umount /resource/app") sh("losetup -d /dev/loop0")
-  local r3=code(sh("losetup -r /dev/loop0 "..path))
-  local r4=code(sh("mount -t romfs /dev/loop0 /resource/app"))
-  if r4~=0 then
-    sh("umount -l /resource/app") sh("losetup -d /dev/loop0")
+  local r3,r4
+  for i=1,2 do
+    sh("umount /resource/app") sh("umount -l /resource/app") sh("losetup -d /dev/loop0")
     r3=code(sh("losetup -r /dev/loop0 "..path))
     r4=code(sh("mount -t romfs /dev/loop0 /resource/app"))
+    if r4==0 then break end
   end
   return r3,r4
 end
-
 local function cp()
   local fin=io.open(SRC,"rb")
   if not fin then return -1,"打不开源文件" end
@@ -209,11 +198,10 @@ local function cp()
   if not ok then return total,"复制中断："..tostring(err or "空间不足") end
   return total,nil
 end
-
 local armed=false
 if root then
   pcall(function()
-    lvgl.Label(root,{x=0,y=16,w=W,h=30,text="控制中心换装",text_font=F_TITLE or F_HEAD,text_color="#FFFFFF",text_align=2})
+    lvgl.Label(root,{x=0,y=16,w=W,h=30,text="控制中心换装",text_font=F_TITLE,text_color="#FFFFFF",text_align=2})
   end)
   pcall(function()
     lvgl.Label(root,{x=0,y=50,w=W,h=18,text="图标·副本",text_font=F_BODY,text_color="#8A8A8A",text_align=2})
@@ -229,7 +217,6 @@ if root then
   pcall(function()
     label=lvgl.Label(root,{x=24,y=142,w=164,h=48,text="",text_font=F_BODY,text_color="#7A7A7A",text_align=0})
   end)
-
   mkbtn(198,60,10,192,"应用图标","#FFFFFF",function()
     reset()
     if sz(DST)~=TOTAL then
@@ -243,12 +230,11 @@ if root then
     if err then say(err) verdict("写入失败","#ff7a7a") return end
     sh("sync")
     local r3,r4=mnt(DST)
-    if r4~=0 then verdict("挂载失败","#ff7a7a") say(string.format("L%d M%d 已写入",r3,r4)) say("重启后再试") return end
+    if r4~=0 then mnt(SRC) verdict("挂载失败","#ff7a7a") say(string.format("L%d M%d 重启再试",r3,r4)) return end
     sn()
     verdict(string.format("已写 %d 条",done),"#63D9A0")
     say("切表盘即可生效")
   end)
-
   mkbtn(266,60,10,192,"还原原厂","#FFFFFF",function()
     reset()
     if sz(DST)~=TOTAL then
@@ -262,12 +248,11 @@ if root then
     if err then say(err) verdict("写入失败","#ff7a7a") return end
     sh("sync")
     local r3,r4=mnt(DST)
-    if r4~=0 then verdict("挂载失败","#ff7a7a") say(string.format("L%d M%d 已写入",r3,r4)) say("重启后再试") return end
+    if r4~=0 then mnt(SRC) verdict("挂载失败","#ff7a7a") say(string.format("L%d M%d 重启再试",r3,r4)) return end
     sn()
     verdict(string.format("已还原 %d 条",done),"#f0c060")
     say("已还原原厂")
   end)
-
   mkbtn(334,50,10,92,"建副本","#63D9A0",function()
     reset()
     if sz(SRC)~=TOTAL then
@@ -292,36 +277,40 @@ if root then
     verdict("副本就绪","#63D9A0")
     say("可应用了")
   end)
-
   mkbtn(334,50,110,92,"删副本","#FF9B9B",function()
     reset()
     if sz(DST)<0 then
-      verdict("本来就没有副本","#63D9A0")
-      say("空间已干净")
+      verdict("本来就没有","#63D9A0")
+      say("已干净")
       armed=false
       return
     end
     if not armed then
       armed=true
       verdict("确认删除？","#f0c060")
-      say("再点一次删副本")
+      say("再点一次")
       return
     end
     armed=false
     say("正在删除…")
+    -- 解绑 loop 后删除，再挂回系统资源，桌面图标才不会变黑
     sh("umount -l /resource/app")
     sh("losetup -d /dev/loop0")
     pcall(function() os.remove(DST) end)
     sh("sync")
+    local rr=mnt(SRC)
     if sz(DST)<0 then
       verdict("已删除","#63D9A0")
-      say("释放 42MB")
+      if rr==0 then
+        say("释放42MB 资源已还原")
+      else
+        say("释放42MB 重启恢复图标")
+      end
     else
       verdict("删除失败","#ff7a7a")
       say("占用 重启再试")
     end
   end)
-
   mkbtn(392,40,10,192,"体检状态","#B8B8B8",function()
     reset()
     local n,o,x=sn()
@@ -330,16 +319,13 @@ if root then
     elseif n==#ENT then verdict("全部已换","#63D9A0")
     else verdict("待应用","#f0c060") end
   end,F_BIG)
-
   pcall(function()
-    lvgl.Label(root,{x=14,y=448,w=184,h=40,text="应用后切表盘生效",text_font=F_BODY,text_color="#5A5A5A",text_align=2})
+    lvgl.Label(root,{x=14,y=448,w=184,h=40,text="切表盘生效",text_font=F_BODY,text_color="#5A5A5A",text_align=2})
   end)
 end
-
 pcall(function() sh("mkdir "..DIR) end)
 fpath=findFile("cc.fpk")
 rpath=findFile("cc_restore.fpk")
-
 do
   say("数据包 "..(fpath and (tostring(fcnt(fpath)).." 条") or "缺失"))
   say("还原包 "..(rpath and "OK" or "缺失"))
@@ -354,8 +340,6 @@ do
     verdict("按应用图标","#f0c060")
   end
 end
-
-local ui = {}
-ui.root = root
-ui.init = function() return root end
+local ui={root=root}
+ui.init=function() return root end
 return ui
