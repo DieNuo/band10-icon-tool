@@ -78,9 +78,9 @@ local function verdict(t,c)
     pcall(function() plate:set{bg_color=bg} end)
   end
 end
-local function mkbtn(y,h,x,w,text,fg,cb,fs)
+local function mkbtn(y,h,x,w,text,fg,cb,fs,p)
   local ok,obj=pcall(function()
-    return lvgl.Object(root,{x=x,y=y,w=w,h=h,bg_color="#1E1E1E",bg_opa=lvgl.OPA(100),border_width=1,border_color="#303030",radius=16,pad_all=0})
+    return lvgl.Object(p or root,{x=x,y=y,w=w,h=h,bg_color="#1E1E1E",bg_opa=lvgl.OPA(100),border_width=1,border_color="#303030",radius=16,pad_all=0})
   end)
   if ok and obj then
     pcall(function() obj:clear_flag(lvgl.FLAG.SCROLLABLE) end)
@@ -213,6 +213,7 @@ local function copyBin()
   return total,nil
 end
 local armed=false
+local about=nil
 if root then
   pcall(function()
     lvgl.Label(root,{x=0,y=14,w=W,h=34,text="换装工具",text_font=F_TITLE,text_color="#FFFFFF",text_align=2})
@@ -339,7 +340,7 @@ if root then
       say("可能被占用，重启后再试")
     end
   end)
-  mkbtn(392,40,10,192,"体检状态","#B8B8B8",function()
+  mkbtn(392,40,10,92,"体检状态","#B8B8B8",function()
     reset()
     local n,o,x=scanAll()
     say(string.format("新 %d · 旧 %d · 其他 %d",n,o,x))
@@ -347,8 +348,56 @@ if root then
     elseif n==#ENT then verdict("全部已换","#63D9A0")
     else verdict("待应用","#f0c060") end
   end,F_BIG)
+  mkbtn(392,40,110,92,"关于","#B8B8B8",function()
+    if about then pcall(function() about:set{x=0,y=0} end) end
+  end,F_BIG)
   pcall(function()
     lvgl.Label(root,{x=14,y=448,w=184,h=54,text="应用后切表盘生效\n重启可完全恢复",text_font=F_BODY,text_color="#5A5A5A",text_align=2})
+  end)
+  -- ── 关于页：头像以 I4 索引色 blob 附在 Lua 源尾部长注释内，运行时读自身文件显示 ──
+  local SP
+  pcall(function() SP=SCRIPT_PATH end)
+  local function avblob()
+    if type(SP)~="string" or #SP==0 then return nil,nil end
+    local f=io.open(SP,"rb")
+    if not f then return nil,nil end
+    local sz=f:seek("end")
+    if not sz or sz<2458 then f:close() return nil,nil end
+    f:seek("set",sz-2458)
+    local b1=f:read(1228)
+    f:seek("set",sz-1230)
+    local b2=f:read(1228)
+    f:close()
+    if not b1 or not b2 or #b1~=1228 or #b2~=1228 then return nil,nil end
+    return b1,b2
+  end
+  local function mkavimg(x,y,px)
+    if not px or px:byte(1)~=0x19 then return nil end
+    for _,nm in ipairs{"Img","Image","img"} do
+      local ok,img=pcall(function() return lvgl[nm](about,{x=x,y=y,w=48,h=48,src=px}) end)
+      if ok and img then return img end
+    end
+    return nil
+  end
+  local function mono(x,y,ch)
+    local c=lvgl.Object(about,{x=x,y=y,w=48,h=48,bg_color="#1E1E1E",bg_opa=lvgl.OPA(100),border_width=1,border_color="#303030",radius=24,pad_all=0})
+    lvgl.Label(c,{x=0,y=11,w=48,h=26,text=ch,text_font=F_HEAD,text_color="#FFFFFF",text_align=2})
+  end
+  pcall(function()
+    about=lvgl.Object(root,{x=0,y=520,w=W,h=H,bg_color="#000000",bg_opa=lvgl.OPA(100),border_width=0,radius=0,pad_all=0})
+    about:clear_flag(lvgl.FLAG.SCROLLABLE)
+    lvgl.Label(about,{x=0,y=14,w=W,h=34,text="关于",text_font=F_TITLE,text_color="#FFFFFF",text_align=2})
+    lvgl.Label(about,{x=14,y=66,w=180,h=28,text="Developers",text_font=F_HEAD,text_color="#8A8A8A",text_align=0})
+    local b1,b2=avblob()
+    if not mkavimg(26,112,b1) then mono(26,112,"D") end
+    lvgl.Label(about,{x=88,y=124,w=100,h=24,text="DieNuo",text_font=F_HEAD,text_color="#FFFFFF",text_align=0})
+    if not mkavimg(26,192,b2) then mono(26,192,"Q") end
+    lvgl.Label(about,{x=88,y=204,w=100,h=24,text="Qq",text_font=F_HEAD,text_color="#FFFFFF",text_align=0})
+    lvgl.Label(about,{x=0,y=290,w=W,h=18,text="感谢米坛社区与每位反馈的朋友",text_font=F_BODY,text_color="#7A7A7A",text_align=2})
+    lvgl.Label(about,{x=0,y=316,w=W,h=18,text="FPtool v2.2.4",text_font=F_BODY,text_color="#5A5A5A",text_align=2})
+    mkbtn(440,50,10,192,"返回","#FFFFFF",function()
+      pcall(function() about:set{x=0,y=520} end)
+    end,nil,about)
   end)
 end
 pcall(function() sh("mkdir "..DIR) end)
