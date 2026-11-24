@@ -4,14 +4,15 @@ local DIR,SRC,DST = "/data/fpatch","/system/app.bin","/data/fpatch/app.bin"
 local TOTAL,W,H = 42667008,212,520
 local ENT = {}
 do
-  local src = "activities/launcher.bin|36580896|13580|968,f8fbfdff,00000000\nalarm/launcher.bin|42028336|13580|1004,fef7ecff,00000000\nalipay/launcher.bin|6084976|13580|1032,ffffff00,00000000\nbreath/launcher.bin|9470288|13580|976,ffe2c2ff,00000000\ncalendar/launcher.bin|19047712|13580|956,ffead0ff,00000000\nchronograph/launcher.bin|19982944|13580|960,ffd7adff,00000000\ncompass/launcher.bin|1741776|13580|980,cececeff,00000000\nfind_phone/launcher.bin|21636768|13580|984,fbce94ff,00000000\nflashlight/launcher.bin|7868704|13580|944,def1ffff,00000000\nheartrate/launcher.bin|4497776|13580|1024,bab6ffff,00000000\ninterconnect/launcher.bin|6396944|13580|996,ffecd2ff,00000000\nlua/launcher.bin|18923216|21772|896,f8f5f5ff,00000000\nmedia/launcher.bin|19638992|13580|984,d6ccffff,00000000\nmijia/launcher.bin|1466880|13580|1008,e7f4d2ff,00000000\nmore/launcher.bin|26085072|13580|984,ffffff00,00000000\nmute_phone/launcher.bin|3342400|13580|1032,ffe6c0ff,00000000\nnfccard/launcher.bin|2294016|13580|928,ffdfb5ff,00000000\nperpetual_calendar/launcher.bin|18858656|13580|820,fbfaf8ff,00000000\nperpetual_calendar/launcher_icon.bin|18887232|13580|864,fdfdfcff,00000000\nphone/contacts_launcher.bin|5913856|21772|940,ffe6cbff,00000000\nphone/launcher.bin|5792352|21772|980,cff3b3ff,00000000\nrecorder/launcher.bin|34911648|13580|964,d9d9d9ff,00000000\nremote_camera/launcher.bin|26098784|13580|96,faf9f76f,020101ff\nsettings/launcher.bin|3801440|13580|1024,f9f2ecff,00000000\nsleep/launcher.bin|3376416|13580|1020,fdf0f2ff,00000000\noxygen/launcher.bin|8939840|13580|1032,c0bafeff,00000000\nsports/launcher.bin|27415936|13580|736,0a0b0bff,e0ffff20\nsports/course/launcher.bin|27931472|13580|1012,feeaeaff,00000000\nsports/record/launcher.bin|27900224|13580|1028,9bc0feff,00000000\nsports/training/launcher.bin|26635744|13580|1012,f8fef8ff,00000000\npressure/launcher.bin|7514368|13580|1008,fafdf1ff,00000000\ntimer/launcher.bin|3156560|13580|976,fcbb73ff,00000000\ntodolist/launcher.bin|25851232|13580|976,abdefbff,00000000\nvoice/aivs/launcher.bin|481568|13580|952,c2e5e8ff,00000000\nvoice/alexa/launcher.bin|660384|21772|248,f6edd1ff,00000000\nweather/launcher.bin|21922256|13580|968,cee8eaff,00000000\nwomenhealth/launcher.bin|42268000|13580|976,dbceffff,00000000\nwxpay/launcher.bin|6478016|13580|60,00af1010,ebf7dfff\nnfccard/access_card_01.bin|2525376|24556|24372,0309180b,94f0f1f2\nnfccard/access_card_02.bin|2307648|24556|24372,09051712,94f0f1f2\nnfccard/access_card_03.bin|2356864|84204|57060,f0f0f0f0,06060623\nnfccard/access_card_04.bin|2441120|84204|36556,fdfdfdfd,070a0a0a\nnfccard/access_card_sdoor.bin|2993392|24436|2776,ebe5ebe5,04040404\nnfccard/access_card_work.bin|2175280|24556|5068,10100707,d0e4e4d0\nnfccard/bank_card_mastercard.bin|3063232|93196|22024,ffececec,08080808\nnfccard/car_card_biyadi.bin|2894064|94092|43120,0d1500ff,fafffeff\nnfccard/car_card_bmw.bin|2799920|94092|90168,00000000,f7f6ed00\nnfccard/car_card_brnd.bin|2681168|24556|12112,e6e6e6db,02020202\nnfccard/car_card_fangchengbao.bin|2199888|94092|78492,1b1613ff,ffffffff\nnfccard/car_card_iccoa.bin|1978256|24556|2784,faeefcfb,18051818\nnfccard/car_card_lot1.bin|1842304|24556|6296,fad2d2fa,01010101\nnfccard/car_card_mini.bin|2010384|94092|90168,00000000,f7f6ed00\nnfccard/car_card_motor.bin|2549984|31756|728,ffffff00,06170dff\nnfccard/car_card_tengshi.bin|2581792|94092|85604,341c10ff,ffffffff\nnfccard/car_card_xia1.bin|3023056|20044|15344,d2e9e9e9,06060606\nnfccard/car_card_xiao.bin|2332256|24556|676,ffffff00,24431def\nnfccard/car_card_yangwang.bin|2705776|94092|85604,16100eff,ffffffff\nnfccard/car_card_yu7.bin|2104528|24556|676,ffffff00,24431def\nnfccard/ecc.bin|3043136|20044|36,ffffff1f,344b20ff"
+  local src = "activities|ls200|0|968,f8fbfdff\nalarm|p0t9s|0|1004,fef7ecff\nalipay|3mf74|0|1032,ffffff00\nbreath|5mzbk|0|976,ffe2c2ff\ncalendar|bc9b4|0|956,ffead0ff\nchronograph|bwaxs|0|960,ffd7adff\ncompass|11byo|0|980,cececeff\nfind_phone|cvr1c|0|984,fbce94ff\nflashlight|4onj4|0|944,def1ffff\nheartrate|2oei8|0|1024,bab6ffff\ninterconnect|3t3ww|0|996,ffecd2ff\nlua|b9l8w|2|896,f8f5f5ff\nmedia|boxjk|0|984,d6ccffff\nmijia|vfuo|0|1008,e7f4d2ff\nmore|fj3dc|0|984,ffffff00\nmute_phone|1zn0g|0|1032,ffe6c0ff\nnfccard|1d62o|0|928,ffdfb5ff\nperpetual_calendar|b87fk|0|820,fbfaf8ff\nperpetual_calendar/launcher_icon.bin|b8thc|0|864,fdfdfcff\nphone/contacts_launcher.bin|3ir5s|2|940,ffe6cbff\nphone|3g5eo|2|980,cff3b3ff\nrecorder|ksa00|0|964,d9d9d9ff\nremote_camera|fjdy8|0|96,faf9f76f,020101ff\nsettings|29h7k|0|1024,f9f2ecff\nsleep|20d9c|0|1020,fdf0f2ff\noxygen|5bm0w|0|1032,c0bafeff\nsports|gbm9s|0|736,0a0b0bff,e0ffff20\nsports/course|gmo28|0|1012,feeaeaff\nsports/record|glzy8|0|1028,9bc0feff\nsports/training|fuw9s|0|1012,f8fef8ff\npressure|4h24g|0|1008,fafdf1ff\ntimer|1vnm8|0|976,fcbb73ff\ntodolist|fe2xs|0|976,abdefbff\nvoice/aivs|abkw|0|952,c2e5e8ff\nvoice/alexa|e5k0|2|248,f6edd1ff\nweather|d1vbk|0|968,cee8eaff\nwomenhealth|p5y74|0|976,dbceffff\nwxpay|3uugw|0|60,00af1010,ebf7dfff\nnfccard/access_card_01.bin|1i4lc|4|24372,0309180b,94f0f1f2\nnfccard/access_card_02.bin|1dglc|4|24372,09051712,94f0f1f2\nnfccard/access_card_03.bin|1eikg|6|57060,f0f0f0f0,06060623\nnfccard/access_card_04.bin|1gbkw|6|36556,fdfdfdfd,070a0a0a\nnfccard/access_card_sdoor.bin|1s5ps|3|2776,ebe5ebe5,04040404\nnfccard/access_card_work.bin|1amgg|4|5068,10100707,d0e4e4d0\nnfccard/bank_card_mastercard.bin|1tnls|7|22024,ffececec,08080808\nnfccard/car_card_biyadi.bin|1q12o|8|43120,0d1500ff,fafffeff\nnfccard/car_card_bmw.bin|1o0fk|8|90168,00000000,f7f6ed00\nnfccard/car_card_brnd.bin|1lgsw|4|12112,e6e6e6db,02020202\nnfccard/car_card_fangchengbao.bin|1b5g0|8|78492,1b1613ff,ffffffff\nnfccard/car_card_iccoa.bin|16efk|4|2784,faeefcfb,18051818\nnfccard/car_card_lot1.bin|13hj4|4|6296,fad2d2fa,01010101\nnfccard/car_card_mini.bin|17380|8|90168,00000000,f7f6ed00\nnfccard/car_card_motor.bin|1inkw|5|728,ffffff00,06170dff\nnfccard/car_card_tengshi.bin|1jc4g|8|85604,341c10ff,ffffffff\nnfccard/car_card_xia1.bin|1ssls|1|15344,d2e9e9e9,06060606\nnfccard/car_card_xiao.bin|1dzkw|4|676,ffffff00,24431def\nnfccard/car_card_yangwang.bin|1lzsg|8|85604,16100eff,ffffffff\nnfccard/car_card_yu7.bin|193v4|4|676,ffffff00,24431def\nnfccard/ecc.bin|1t83k|1|36,ffffff1f,344b20ff"
+  local LV={13580,20044,21772,24436,24556,31756,84204,93196,94092}
+  local function b36(t) local n=0 for i=1,#t do local d=t:byte(i); n=n*36+(d<58 and d-48 or d-87) end return n end
   for line in src:gmatch("[^\n]+") do
-    local path, off, ln, smp = line:match("([^|]+)|([^|]+)|([^|]+)|(.+)")
-    local s = {}
-    for a, b, c in smp:gmatch("([^,;]+),([^,;]+),([^,;]+)") do
-      s[#s + 1] = { tonumber(a), b, c }
-    end
-    ENT[#ENT + 1] = { path, tonumber(off), tonumber(ln), s }
+    local path,off,li,smp = line:match("([^|]+)|([^|]+)|([^|]+)|(.+)")
+    if not path:find("%.") then path=path.."/launcher.bin" end
+    local a,b,c = smp:match("([^,]+),([^,]+),?(.*)")
+    if c=="" then c="00000000" end
+    ENT[#ENT+1] = { path, b36(off), LV[tonumber(li)+1], { {tonumber(a), b, c} } }
   end
 end
 local function sh(cmd)
@@ -219,7 +220,7 @@ if root then
     lvgl.Label(root,{x=0,y=14,w=W,h=34,text="换装工具",text_font=F_TITLE,text_color="#FFFFFF",text_align=2})
   end)
   pcall(function()
-    lvgl.Label(root,{x=0,y=50,w=W,h=18,text="图标 · 封面 · 副本管理",text_font=F_BODY,text_color="#8A8A8A",text_align=2})
+    lvgl.Label(root,{x=0,y=50,w=W,h=18,text="图标·封面·副本",text_font=F_BODY,text_color="#8A8A8A",text_align=2})
   end)
   pcall(function()
     plate=lvgl.Object(root,{x=10,y=74,w=192,h=64,bg_color="#1E1E1E",bg_opa=lvgl.OPA(100),border_width=1,border_color="#303030",radius=14,pad_all=0})
@@ -236,7 +237,7 @@ if root then
     reset()
     if size_of(DST)~=TOTAL then
       verdict("缺少副本","#ff7a7a")
-      say("先点下方「建副本」")
+      say("先点建副本")
       return
     end
     if not fpkPath then verdict("缺少数据","#ff7a7a") return end
@@ -249,7 +250,7 @@ if root then
       mountTo(SRC)
       verdict("挂载失败","#ff7a7a")
       say(string.format("L%d M%d 已写入",r3,r4))
-      say("重启手环后再试一次")
+      say("重启后再试")
       return
     end
     scanAll()
@@ -260,7 +261,7 @@ if root then
     reset()
     if size_of(DST)~=TOTAL then
       verdict("缺少副本","#ff7a7a")
-      say("先点下方「建副本」")
+      say("先点建副本")
       return
     end
     if not restPath then verdict("缺少数据","#ff7a7a") return end
@@ -273,7 +274,7 @@ if root then
       mountTo(SRC)
       verdict("挂载失败","#ff7a7a")
       say(string.format("L%d M%d 已写入",r3,r4))
-      say("重启手环后再试一次")
+      say("重启后再试")
       return
     end
     scanAll()
@@ -284,8 +285,8 @@ if root then
     reset()
     local s=size_of(SRC)
     if s~=TOTAL then
-      verdict("源文件异常","#ff7a7a")
-      say("app.bin 大小 "..s)
+      verdict("源异常","#ff7a7a")
+      say("大小 "..s)
       return
     end
     if size_of(DST)==TOTAL then
@@ -293,7 +294,7 @@ if root then
       say("直接应用封面即可")
       return
     end
-    say("复制 42MB 请勿退出…")
+    say("复制42MB 勿退出")
     local n,err=copyBin()
     sh("sync")
     if err then say(err) verdict("建副本失败","#ff7a7a") return end
@@ -308,20 +309,19 @@ if root then
   mkbtn(334,50,110,92,"删副本","#FF9B9B",function()
     reset()
     if size_of(DST)<0 then
-      verdict("本来就没有副本","#63D9A0")
-      say("空间已干净")
+      verdict("本无副本","#63D9A0")
+      say("空间干净")
       armed=false
       return
     end
     if not armed then
       armed=true
       verdict("确认删除？","#f0c060")
-      say("再点一次「删副本」")
+      say("再点一次删副本")
       return
     end
     armed=false
     say("正在删除…")
-    -- 解绑 loop 后删除，再挂回系统资源，否则桌面图标会变黑
     sh("umount /resource/app")
     sh("umount -l /resource/app")
     sh("losetup -d /dev/loop0")
@@ -337,7 +337,7 @@ if root then
       end
     else
       verdict("删除失败","#ff7a7a")
-      say("可能被占用，重启后再试")
+      say("被占用 重启再试")
     end
   end)
   mkbtn(392,40,10,92,"体检状态","#B8B8B8",function()
@@ -352,9 +352,21 @@ if root then
     if about then pcall(function() about:set{x=0,y=0} end) end
   end,F_BIG)
   pcall(function()
-    lvgl.Label(root,{x=14,y=448,w=184,h=54,text="应用后切表盘生效\n重启可完全恢复",text_font=F_BODY,text_color="#5A5A5A",text_align=2})
+    lvgl.Label(root,{x=14,y=448,w=184,h=54,text="切表盘生效\n重启可恢复",text_font=F_BODY,text_color="#5A5A5A",text_align=2})
   end)
-  -- 关于页（字母圆头像，纯代码零外部资源）
+  local AV1,AV2
+  pcall(function()
+    local sp
+    pcall(function() sp=SCRIPT_PATH end)
+    if type(sp)~="string" or #sp==0 then return end
+    local f=io.open(sp,"rb"); if not f then return end
+    local z=f:seek("end")
+    if not z or z<560 then f:close() return end
+    f:seek("set",z-556)
+    AV1=f:read(276)
+    AV2=f:read(276)
+    f:close()
+  end)
   pcall(function()
     about=lvgl.Object(root,{x=0,y=520,w=W,h=H,bg_color="#000000",bg_opa=lvgl.OPA(100),border_width=0,radius=0,pad_all=0})
     about:clear_flag(lvgl.FLAG.SCROLLABLE)
@@ -362,12 +374,22 @@ if root then
     lvgl.Label(about,{x=14,y=66,w=180,h=28,text="Developers",text_font=F_HEAD,text_color="#8A8A8A",text_align=0})
     for i,nm in ipairs{"DieNuo","Qq"} do
       local y=112+(i-1)*80
-      local c=lvgl.Object(about,{x=26,y=y,w=48,h=48,bg_color="#1E1E1E",bg_opa=lvgl.OPA(100),border_width=1,border_color="#303030",radius=24,pad_all=0})
-      lvgl.Label(c,{x=0,y=11,w=48,h=26,text=nm:sub(1,1),text_font=F_HEAD,text_color="#FFFFFF",text_align=2})
-      lvgl.Label(about,{x=88,y=y+12,w=100,h=24,text=nm,text_font=F_HEAD,text_color="#FFFFFF",text_align=0})
+      local px=(i==1 and AV1 or AV2)
+      local shown=false
+      if px and px:byte(1)==0x19 then
+        pcall(function()
+          local im=lvgl.Img or lvgl.Image or lvgl.img
+          if im then im(about,{x=26,y=y,w=20,h=20,src=px}) shown=true end
+        end)
+      end
+      if not shown then
+        local c=lvgl.Object(about,{x=26,y=y,w=20,h=20,bg_color="#1E1E1E",bg_opa=lvgl.OPA(100),border_width=1,border_color="#303030",radius=12,pad_all=0})
+        lvgl.Label(c,{x=0,y=0,w=20,h=20,text=nm:sub(1,1),text_font=F_HEAD,text_color="#FFFFFF",text_align=2})
+      end
+      lvgl.Label(about,{x=52,y=y,w=140,h=24,text=nm,text_font=F_HEAD,text_color="#FFFFFF",text_align=0})
     end
     lvgl.Label(about,{x=0,y=290,w=W,h=18,text="感谢米坛社区与每位反馈的朋友",text_font=F_BODY,text_color="#7A7A7A",text_align=2})
-    lvgl.Label(about,{x=0,y=316,w=W,h=18,text="FPtool v2.2.5",text_font=F_BODY,text_color="#5A5A5A",text_align=2})
+    lvgl.Label(about,{x=0,y=316,w=W,h=18,text="FPtool v2.2.6",text_font=F_BODY,text_color="#5A5A5A",text_align=2})
     mkbtn(440,50,10,192,"返回","#FFFFFF",function()
       pcall(function() about:set{x=0,y=520} end)
     end,nil,about)
