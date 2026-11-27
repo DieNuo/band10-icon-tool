@@ -4,7 +4,7 @@
 
 基于 [KernelSU-Style-UI-Kit](https://github.com/chenaizhang/KernelSU-Style-UI-Kit) 的 Miuix 米柚风格界面构建。
 
-**[⬇️ 最新版下载（Releases）](https://github.com/DieNuo/band10-icon-tool/releases/latest)** · 当前版本 **v2.2.6**
+**[⬇️ 最新版下载（Releases）](https://github.com/DieNuo/band10-icon-tool/releases/latest)** · 当前版本 **v2.2.7**
 
 ## 功能一览
 
@@ -14,7 +14,8 @@
 - 未更换的图标自动保留原版样式，可随时还原
 - 支持 JPG / PNG / WebP / TGA 输入，自动居中裁剪到目标尺寸
 - 换装表盘手环端内置 **建副本 / 删副本 / 体检状态**，无需单独的副本工具表盘
-- 手环端「关于」页含开发者真实头像，返回键适配胶囊屏
+- 长按表盘弹出表盘选择菜单，像普通表盘一样切换
+- 手环端「关于」页含开发者真实头像；「更多」页可查看存储占用并一键清理缓存
 - 深浅双主题 + 动态取色，Miuix / Material 两种界面风格
 
 ## 使用方法
